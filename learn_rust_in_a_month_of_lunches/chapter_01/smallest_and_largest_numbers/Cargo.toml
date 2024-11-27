@@ -1,0 +1,6 @@
+[package]
+name = "smallest_and_largest_numbers"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
