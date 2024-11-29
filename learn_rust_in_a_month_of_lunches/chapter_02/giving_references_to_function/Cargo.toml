@@ -1,0 +1,6 @@
+[package]
+name = "giving_references_to_function"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
