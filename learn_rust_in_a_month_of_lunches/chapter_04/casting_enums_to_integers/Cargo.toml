@@ -1,0 +1,6 @@
+[package]
+name = "casting_enums_to_integers"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
