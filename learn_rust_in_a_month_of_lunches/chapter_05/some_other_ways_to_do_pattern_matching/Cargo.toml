@@ -1,0 +1,6 @@
+[package]
+name = "some_other_ways_to_do_pattern_matching"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
