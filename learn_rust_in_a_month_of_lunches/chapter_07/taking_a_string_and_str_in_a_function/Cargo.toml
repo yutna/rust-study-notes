@@ -1,0 +1,6 @@
+[package]
+name = "taking_a_string_and_str_in_a_function"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
