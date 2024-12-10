@@ -6,8 +6,15 @@
 // from one reference to another. Here is how the standard library
 // describes it:
 
-// This a book.
+// Both String and &str implement AsRef<str>.
+
+fn print_it<T: AsRef<str>>(input: T) {
+    println!("{}", input.as_ref());
+}
 
 fn main() {
-    println!("Hello, world!");
+    print_it("Please print me");
+    print_it("Also, please print me".to_string());
+    // print_it(7);
 }
+
