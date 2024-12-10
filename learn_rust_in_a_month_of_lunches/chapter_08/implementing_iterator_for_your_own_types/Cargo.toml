@@ -1,0 +1,6 @@
+[package]
+name = "implementing_iterator_for_your_own_types"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
