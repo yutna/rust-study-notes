@@ -1,0 +1,6 @@
+[package]
+name = "vertical_bar_in_a_closure"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
