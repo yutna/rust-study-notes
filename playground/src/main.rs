@@ -1,3 +1,3 @@
 fn main() {
-    println!("Test signing key");
+    println!("Test signing key xxx");
 }
