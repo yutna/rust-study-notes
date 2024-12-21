@@ -1,4 +1,3 @@
 fn main() {
     println!("Hello, world!");
-    // XXX YYYY zzzz
 }
