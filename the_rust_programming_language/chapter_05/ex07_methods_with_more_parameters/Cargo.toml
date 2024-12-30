@@ -1,0 +1,6 @@
+[package]
+name = "ex07_methods_with_more_parameters"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

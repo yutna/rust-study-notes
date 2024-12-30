@@ -1,0 +1,6 @@
+[package]
+name = "ex03_unit_like_struct"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

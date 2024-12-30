@@ -1,0 +1,6 @@
+[package]
+name = "ex04_ownership_of_struct_data"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
