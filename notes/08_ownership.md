@@ -53,10 +53,9 @@
 - Rust will never automatically create *deep* copies of your data.
 - Any *automatic* copying can be assumed to be inexpensive in terms of runtime performance.
 
-## Scope ans Assignment
+## Scope and Assignment
 
 - When you assign a completely new value to an existing variable, Rust will call `drop` and free the original value's memory immediatly.
-
 
 ## Variables and Data Interacting with Clone
 
@@ -83,6 +82,12 @@
 
 The ownership of a variable follows the same patterns every time:
 
-|> assigning a value to another value moves it.
+> assigning a value to another value moves it.
 
 When a variable that includes data on the heap goes out of scope, the value will be cleaned up by `drop` unless ownership of the data has been moved to another variable.
+
+---
+
+Always remember that when we say **move**, **allocate**, or **drop**, it means we are working with data on the **heap**.
+
+However, when we talk about **copy**, we are working with data on the **stack**, and there is no function call to **drop** when it goes out of scope.
