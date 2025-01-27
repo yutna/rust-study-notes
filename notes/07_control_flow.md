@@ -47,4 +47,3 @@
 
 - You can use a `for` loop and execute some code for each item in a collection.
 - Use `for` loop in situations in which you want to run some code a certain number of times.
- 
