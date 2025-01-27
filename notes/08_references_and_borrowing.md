@@ -2,7 +2,7 @@
 
 - A *reference* is like a pointer in that it's an address we can follow to access the data stored at that address.
 - Unlike a pointer, a reference is guaranteed to point to a valid value of a particular type for the life of that reference.
-- The ampersands (&) represent *references*, and they allow you to refer to some value without taking ownership.
+- The ampersands (`&`) represent *references*, and they allow you to refer to some value without taking ownership.
 - The opposite of referencing by using `&` is *dereferencing*, which is accomplished with the dereference operator, `*`.
 - We call the action of creating a reference *borrowing*.
 - Just as variables are immutable by default, so are references. We're **NOT** allowed to modify something we have a reference to.
@@ -20,5 +20,5 @@
 
 ## The Rules of References
 
-- At any given tim, you can have either one mutable reference or any number of immutable references.
+- At any given time, you can have either one mutable reference or any number of immutable references.
 - References **MUST** always be valid.
