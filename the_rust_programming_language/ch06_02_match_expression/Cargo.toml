@@ -1,0 +1,6 @@
+[package]
+name = "ch06_02_match_expression"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

@@ -54,7 +54,7 @@
 ## Method Syntax
 
 - Methods are similar to functions:
-  - We declare them with the `fn ` keyword and a name.
+  - We declare them with the `fn` keyword and a name.
   - They can have parameters and a return value
   - They contain some code that's run when the method is called from somewhere else.
 - Unlike functions:
