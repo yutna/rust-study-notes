@@ -90,4 +90,4 @@
 
 ## Multiple `impl` Blocks
 
-- Eac struct is allowed to have multiple `impl` blocks.
+- Each struct is allowed to have multiple `impl` blocks.
