@@ -1,11 +1,11 @@
 # Packages, Crates, and Modules
 
-- A package can contain multiple binary crates and optionally one library crate.
-- A *module system* include:
-  1. **Packages** : A cargo feature that lets you build, test, and share crates.
-  2. **Crates**: A tree of modules that produces a library or executable.
-  3. **Modules** and **use**: Let you control the organization, scope, and privacy of paths.
-  4. **Paths**: A way of naming an item, such as a struct, function, or module.
+A *module system* include:
+
+1. **Packages** : A cargo feature that lets you build, test, and share crates.
+2. **Crates**: A tree of modules that produces a library or executable.
+3. **Modules** and **use**: Let you control the organization, scope, and privacy of paths.
+4. **Paths**: A way of naming an item, such as a struct, function, or module.
 
 ## Crates
 - A *crate* is the smallest amount of code that the Rust compiler considers at a time.
@@ -30,3 +30,19 @@
 - Cargo passes the crate root files to `rustc` to build the library or binary.
 - If a package contains `src/main.rs` and `src/lib.rs`, it has two crates: a binary and a library, both with the same name as the package.
 - A package can have multiple binary crates by placing files in the `src/bin` directory: each file will be a separate binary crate.
+
+## How Modules Work?
+
+- **Start from the crate root**: When compiling a crate, the compiler first looks in the crate root file for code to compile. (`src/lib.rs` or `src/main.rs`)
+- **Declaring modules**: In the crate root file, you can declare new modules; say you declare a *garden* module with `mod gargen;`. The compiler will look for the module's code in these places:
+  1. Inline, within curly brackets that replace the semicolon following `mod gargen`
+  2. In the file `src/gargen.rs`.
+  3. In the file `src/garden/mod.rs`
+- **Declaring submodules**: In any file other than the crate root, you can declare submodules. For example, you might declare `mod vegetables;` in `src/gargen.rs`. The compiler will look for the submodule's code within the directory named for the parent module in these places:
+  1. Inline, directly following `mod vegetables`, within curly brackets instead of the semicolon
+  2. In the file `src/gargen/vegetables.rs`
+  3. In the file `src/gargen/vegetables/mod.rs`
+- **Paths to code in modules**: Once a module is part of your crate, you can refer to code in that module from anywhere else in that same crate, as long as the privacy rules allow, using the path to the code. For example, an `Asparagus` type in the gargen vegetables modules would be found at `crate::gargen::vegetables::Asparagus`.
+- **Private vs Public**: Code within a module is private from its parent modules by default. To make a module public, declare it with `pub mod` instead of `mod`. To make items within a public module public as well, use `pub` before their declarations.
+- **The `use` keyword**: Within a scope, the `use` keyword creates shortcuts to items to reduce repetition of long paths. In any scope that can refer to `crate::garden::vegetables::Asparagus`, you can create a shortcut with `use crate::garden::vegetables::Asparagus;` and from then on you only need to write `Asparagus` to make use of that type in the scope.
+
