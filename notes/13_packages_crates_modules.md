@@ -71,3 +71,36 @@ A *module system* include:
 - We can also use `pub` to designate structs and enumas public.
 - If we use `pub` before a struct definition, we make the struct public, but the struct's fields will still be private. We can make each field publicor not on a case-by-case basis.
 - If we make an enum public, **ALL OF ITS VARAINTS** are then public. We only need the `pub` before the `enum` keyword.
+
+## Bringing Paths into Scope with the `use` Keyword
+
+- We can create a shortcut to a path with the `use` keyword once, and then use the shorter name everywhere else in the scope.
+- Adding `use` and a path in a scope is similar to creating a symbolic link in the filesystem.
+- Paths brought into scope with `use` also check privacy, like any other paths.
+- The `use` only creates the shortcut for the particular scope in which the `use` occurs.
+- Bringing the function's parent module into scope with `use` means we have to specify the parent module when calling the function.
+- Specifying the parent module when calling the function makes it clear that the function isn't locally defned while still minimizing repetition of the full path.
+- On the other hand, when bringing in structs, enums, and other items with `use`, it's idiomatic to specify the full path.
+- The exception to this idiom is if we're bringing two items with the same name into scope with `use` statements.
+
+## Providing New Names with the `as` keyword
+
+- There's another solution to the problem of bringing two types of the same name into the same scope with `use`: after the path, we can specify `as` and a new local name, or *alias*, for the type. e.g. `use std::io::Result as IoResult;`
+
+## Re-exporting Names with `pub use`
+
+- When we bring a name into scope with the `use` keyword, the name available in the new scope is private.
+- To enable the code that calls our code to refer to that name as if it had been defined in that code's scope, we can combine `pub` and `use`.
+- This technique is called *re-exporting* because we're bringing an item into scope but also making that item available for others to bring into their scope.
+
+## Using Nested Paths to Clean Up Large `use` Lists
+
+- If we're using multiple items defined in the same crate or same module, we can use nested paths to bring the same items into scope in one line.
+- We do this by specifying the common part of the path, followd by two colons, and then curly brackets around a list of the parts of the paths that differ. `use std::{cmp::Ordering, io};`
+
+## The Glob Operator
+
+- If we want to bring **ALL** public items defined in a path into scopes, we can specify that path followed by the `*` glob operator. `use std::collections::*;`
+- **BE CAREFUL** when using the glob operator! Glob can make it harder to tell what names are in scope and where a name used in your program was defined.
+- The glob operator is often used when testing to bring everything under test into the `tests` module.
+- The glob operator is also sometimes used as part of the prelude pattern.
