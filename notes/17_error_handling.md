@@ -52,14 +52,14 @@
   ```
 
 - The `T` and `E` are generic type parameters:
-    - `T` represents the type of the value that will be returned in a success case within the `Ok` variant.
-    - `E` represents the type of the error that will be returned in a failure case within the `Err`variant.
+  - `T` represents the type of the value that will be returned in a success case within the `Ok` variant.
+  - `E` represents the type of the error that will be returned in a failure case within the `Err`variant.
 
 ### Shortcuts for Panic on Error: `unwrap` and `expect`
 
 - The `unwrap` method is a shortcut method implemented just like the `match` expression.
-    - If the `Result` value is the `Ok` variant, `unwrap` will return the value inside the `Ok`
-    - If the `Result` value is the `Err` variant, `unwrap` will call the `panic!` macro for us.
+  - If the `Result` value is the `Ok` variant, `unwrap` will return the value inside the `Ok`
+  - If the `Result` value is the `Err` variant, `unwrap` will call the `panic!` macro for us.
 - The `expect` method lets us also choose the `panic!` error message.
 - Using `expect` instead of `unwrap` and providing good error messages can coney your intent and make tracking down the
   source of a panic easier.
@@ -77,17 +77,17 @@
   easier.
 - The `?` placed after a `Result` value is defined to work in almost the same way as the `match` expressions we defined
   to handle the `Result` values.
-    - If the value of the `Result` is an `Ok`, the value inside the `Ok` will get returned from this expression, and the
+  - If the value of the `Result` is an `Ok`, the value inside the `Ok` will get returned from this expression, and the
       program will continue.
-    - If the value is an `Err`, the `Err` will be **RETURNED** from the whole function as if we had used the `return`
+  - If the value is an `Err`, the `Err` will be **RETURNED** from the whole function as if we had used the `return`
       keyword so the error value gets propagated to the calling code.
 - The `?` operator can only be used in functions whose return type is compatible with the value the `?` is used on. (the
   `?` operator can only be used in a function that returns `Result` or `Option` or another type that implements
   `FromResidual`). If you try to use the `?` operator that return type does **NOT** match, you will get compile error.
 - From the previous content, that means, you can use `?` on `Option` in a function that return an `Option` as well.
-    - It similar to its behavior when called on a `Result<T, E>`.
-    - If the value is `None`, the `None` will returned early from the function at that point.
-    - If the value is `Some`, the value inside the `Some` is the resultant value of the expression, and the function
+  - It similar to its behavior when called on a `Result<T, E>`.
+  - If the value is `None`, the `None` will returned early from the function at that point.
+  - If the value is `Some`, the value inside the `Some` is the resultant value of the expression, and the function
       continues.
 - The `?` operator won't automatically convert a `Result` to an `Option` or vice versa;
 - Reading the file into a string is a fairly common operation, so the standard library provides the convenient
