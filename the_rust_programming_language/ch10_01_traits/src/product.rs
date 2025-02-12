@@ -1,4 +1,3 @@
-use crate::order::Order;
 use std::fmt::Display;
 
 pub struct Product {
