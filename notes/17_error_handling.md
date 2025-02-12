@@ -60,13 +60,13 @@
 
 - Instead of handling errors within a function, you can return them to the calling code using the `?` operator.
 - The `?` operator works like a `match` expression:
-    - Returns the value inside `Ok` and continues.
-    - Returns the `Err` from the function if it encounters an error.
+  - Returns the value inside `Ok` and continues.
+  - Returns the `Err` from the function if it encounters an error.
 - The `?` operator can only be used in functions that return `Result`, `Option`, or a compatible type.
 - If the function's return type doesn't match, you'll get a compile error.
 - The `?` operator can also be used with `Option`:
-    - Returns `None` if the value is `None`.
-    - Continues with the value inside `Some`.
+  - Returns `None` if the value is `None`.
+  - Continues with the value inside `Some`.
 - The `?` operator doesn't convert between `Result` and `Option`.
 - The `fs::read_to_string` function conveniently reads a file into a `String`.
 - `Box<dyn Error>` represents any kind of error.
