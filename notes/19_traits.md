@@ -58,8 +58,8 @@
 ### Specifying Multiple Trait Bounds with the `+` Syntax
 
 - We can also specify more than one trait bound.
-    - The `impl Trait` syntax: `pub fn notify(item: &(impl Summary + Display)) {}`
-    - The trait bound with `+` syntax: `pub fn notify<T: Summary + Display>(item: &T) {}`
+  - The `impl Trait` syntax: `pub fn notify(item: &(impl Summary + Display)) {}`
+  - The trait bound with `+` syntax: `pub fn notify<T: Summary + Display>(item: &T) {}`
 
 ### Clearer Trait Bounds with where Clauses
 
@@ -107,7 +107,7 @@ where
   extensively in the Rust standard library.
 
 ```rust
-// For example, the standard library implements the `ToString` trait on any type that implements the Display trait. 
+// For example, the standard library implements the `ToString` trait on any type that implements the Display trait.
 // The impl block in the standard library looks similar to this code:
 impl<T: Display> ToString for T {
     // --snip--
