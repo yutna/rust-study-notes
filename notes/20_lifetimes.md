@@ -40,3 +40,36 @@
 - We can define structs to hold references. (ก่อนหน้าบทนี้เรา define structs ด้วย concrete types เพียงอย่างเดียว)
 - We would need to add a lifetime annotation on every reference in the struct's definition.
 - As with generic data types, we declare the name of the generic lifetime parameter inside angle brackets after the name of the struct so we can use the lifetime parameter in the body of the struct definition.
+
+## Lifetime Elision
+
+- Lifetimes on function or method parameters are called *input lifetimes*, and lifetimes on return values are called *output lifetimes*.
+- The compiler uses three rules to figure out the lifetimes of the reference when there aren't explicit annotations.
+  1. The compiler assign a lifetime parameter to each parameter that's a reference.
+  2. If there is exactly one input lifetime parameter, that lifetime is assigned to all output lifetime parameters.
+  3. If there are multiple input lifetime parameters, but one of them is `&self` or `&mut self` because this is a method, the lifetime of `self` is assigned to all output lifetime parameters.
+
+จากหัวข้อนี้ถ้าเราติดปัญหาในการเขียน lifetime หรืออยากทบทวนอีกครั้งให้กลับไปอ่าน paragraph ที่ขึ้นต้นด้วยว่า *Let’s pretend we’re the compiler.* อีกครั้งจะเข้าใจหลัการในการใช้งาน lifetime มากขึ้น
+
+## Lifetime Annotations in Method Definitions
+
+- Lifetime names for struct fields always need to be declared after the `impl` keyword and the used after then struct’s name because those lifetimes are part of the struct’s type.
+- In method signatures inside the `impl` block, references might be tied to the lifetime of references in the struct’s fields, or they might be independent.
+
+## The Static Lifetime
+
+- `'static` lifetime denotes that the affected reference can live for the entire duration of the program.
+- All string literals have the `'static` lifetime, which we can annotate as follows: `let s: &'static str = "I have a static lifetime."`
+- You might see suggestions to use the `'static` lifetime in error messages. But before specifying `'static` as the lifetime for a reference, think about whether the reference you have actually lives the entire lifetime of your program or not, and whether you want it to.
+- *Most of the time*, an error message suggesting the `'static` lifetime results from attempting to create a dangling reference or a mismatch of the available lifetimes. In such cases, the solution is to fix those problems, **NOT** to specify the `'static` lifetime.
+
+## Generic Type Parameters, Trait Bounds, and Lifetimes Together
+
+```rust
+
+use std::fmt::Display;
+
+fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a str {
+
+}
+```
